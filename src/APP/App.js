@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import Header from './partials/Header';
 import OfficesPage from './office/officesPage';
 import SingleOfficePage from './office/SingleOfficePage'
 import DataService from './services/dataService';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import Animation from '../APP/partials/Animation';
+import { Switch, Route} from 'react-router-dom';
 
 class App extends React.Component{
 
@@ -12,7 +13,8 @@ class App extends React.Component{
     super(props);
     this.state = {
       offices: [],
-      isListView: true
+      isListView: true,
+      loading: true
     }
   }
 
@@ -23,7 +25,8 @@ class App extends React.Component{
   loadOffices(){
      DataService.getData().then(data => {
        this.setState({
-         offices: data
+         offices: data,
+         loading: false
        })
      });
     
@@ -48,9 +51,9 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-      <Header handleClick={this.listViewHandler} handleClick1={this.gridViewHandler} /> 
+      <Header isListView={this.state.isListView} handleClick={this.listViewHandler} handleClick1={this.gridViewHandler} /> 
       <Switch>
-        <Route exact path='/' render={(props) => <OfficesPage {...props} isListView={this.state.isListView} officesData={this.state.offices} />}/>
+        {(this.state.loading) ? <Animation/> : <Route exact path='/' render={(props) => <OfficesPage {...props} isListView={this.state.isListView} officesData={this.state.offices} />}/>}
         <Route exact path='/singleOffice/:number' render={(props) => <SingleOfficePage {...props} officeData={this.state.offices} />} />
       </Switch>
     </div>

@@ -1,14 +1,15 @@
 import React from 'react';
+import './officeListItem.scss';
 
  const OfficeListItem = (props) => {
-
+    const office = props.officeData;
     return(
-        <div className='listItem'>
-            {(props.officeData.photo) ?  <img src={props.officeData.photo} alt=""/> : <p className='logoPic'>{props.officeData.name.charAt(0).toUpperCase()} </p>} 
+        <div className='officeListItem'>
+            {(office.photo) ?  <img src={office.photo} alt=""/> : <p className='logoPic'>{office.name.charAt(0).toUpperCase()} </p>} 
             
             <div>
-                <p>{(props.officeData.name.length > 40) ? props.officeData.name.slice(0, 70) + '...' : props.officeData.name} </p>
-                <p>{props.officeData.description}</p>
+                <p>{office.name}</p>
+                <p>{(office.description.length > 76) ? office.description.slice(0, 76) + '...' : office.description} </p>
             </div>
         </div>
     )

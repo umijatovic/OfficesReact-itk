@@ -1,0 +1,31 @@
+.officesDiv{
+    padding: 15px;
+}
+
+.officesDivGrid{
+	margin: 15px;
+	padding: 1px;
+    background-color: #00BCD4;
+}
+
+@media only screen and (min-width: 600px){
+    .officesDivGrid{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        a{
+            width: 50%;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .officesDivGrid{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        a{
+            width: 25%;
+        }
+    }
+}

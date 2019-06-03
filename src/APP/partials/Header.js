@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.scss';
 
 class Header extends React.Component{
 
@@ -12,12 +13,15 @@ class Header extends React.Component{
 
     render(){
         const { handleClick, handleClick1 } = this.props;
+        const buttonClass = (this.props.isListView) ? 'selected' : '';
+        const buttonClass1 = (!this.props.isListView) ? 'selected' : '';
+
         return(
             <header>
                 <h1>Offices</h1>
                 <nav>
-                    <button onClick={handleClick}>List</button>
-                    <button onClick={handleClick1} >Grid</button>
+                    <button className={buttonClass} onClick={handleClick}>List</button>
+                    <button className={buttonClass1} onClick={handleClick1} >Grid</button>
                 </nav>
             </header>
         )
