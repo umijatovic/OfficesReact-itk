@@ -12,21 +12,22 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+
       offices: [],
       isListView: true,
       loading: true
+
     }
   }
 
-  
-
-  
-
   loadOffices(){
      DataService.getData().then(data => {
+
        this.setState({
+
          offices: data,
          loading: false
+
        })
      });
     
@@ -39,8 +40,11 @@ class App extends React.Component{
  }
 
  listViewHandler = () =>{
+
   this.setState({
+
     isListView: true
+
   })
 }
 
@@ -49,13 +53,18 @@ class App extends React.Component{
 }
 
   render(){
+
     return (
+
       <div className="App">
+
       <Header isListView={this.state.isListView} handleClick={this.listViewHandler} handleClick1={this.gridViewHandler} /> 
+      
       <Switch>
         {(this.state.loading) ? <Animation/> : <Route exact path='/' render={(props) => <OfficesPage {...props} isListView={this.state.isListView} officesData={this.state.offices} />}/>}
         <Route exact path='/singleOffice/:number' render={(props) => <SingleOfficePage {...props} officeData={this.state.offices} />} />
       </Switch>
+
     </div>
   );
     }
