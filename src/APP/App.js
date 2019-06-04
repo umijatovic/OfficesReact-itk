@@ -4,8 +4,9 @@ import Header from './partials/Header';
 import OfficesPage from './office/officesPage';
 import SingleOfficePage from './office/SingleOfficePage'
 import DataService from './services/dataService';
+import MapPage from './office/MapPage';
 import Animation from '../APP/partials/Animation';
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route, Redirect} from 'react-router-dom';
 
 class App extends React.Component{
 
@@ -14,7 +15,7 @@ class App extends React.Component{
     this.state = {
 
       offices: [],
-      isListView: true,
+      view: 'list',
       loading: true
 
     }
@@ -35,7 +36,7 @@ class App extends React.Component{
 
  gridViewHandler = () =>{
    this.setState({
-     isListView: false
+     view: 'grid'
    })
  }
 
@@ -43,8 +44,16 @@ class App extends React.Component{
 
   this.setState({
 
-    isListView: true
+    view: 'list'
 
+  })
+}
+
+mapViewHandler = () =>{
+
+  this.setState({
+
+    view: 'map'
   })
 }
 
@@ -58,11 +67,13 @@ class App extends React.Component{
 
       <div className="App">
 
-      <Header isListView={this.state.isListView} handleClick={this.listViewHandler} handleClick1={this.gridViewHandler} /> 
+      <Header view={this.state.view} handleClick={this.listViewHandler} handleClick1={this.gridViewHandler} handleClick2={this.mapViewHandler}/> 
       
       <Switch>
-        {(this.state.loading) ? <Animation/> : <Route exact path='/' render={(props) => <OfficesPage {...props} isListView={this.state.isListView} officesData={this.state.offices} />}/>}
-        <Route exact path='/singleOffice/:number' render={(props) => <SingleOfficePage {...props} officeData={this.state.offices} />} />
+        {(this.state.loading) ? <Animation/> : <Route exact path='/' render={(props) => <OfficesPage {...props} view={this.state.view} officesData={this.state.offices} />}/>}
+        <Route  path='/singleOffice/:number' render={(props) => <SingleOfficePage {...props} officeData={this.state.offices} />} />
+        <Route  path='/map' component={MapPage} />
+        
       </Switch>
 
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom'
 
 class Header extends React.Component{
 
@@ -13,9 +14,11 @@ class Header extends React.Component{
 
     render(){
 
-        const { handleClick, handleClick1 } = this.props;
-        const buttonClass = (this.props.isListView) ? 'selected' : '';
-        const buttonClass1 = (!this.props.isListView) ? 'selected' : '';
+        const { handleClick, handleClick1, handleClick2 } = this.props;
+        const buttonClass = (this.props.view === 'list') ? 'selected' : '';
+        const buttonClass1 = (this.props.view === 'grid') ? 'selected' : '';
+        const buttonClass2 = (this.props.view === 'map') ? 'selected' : '';
+        
 
         return(
 
@@ -25,8 +28,9 @@ class Header extends React.Component{
 
                 <nav>
 
-                    <button className={buttonClass} onClick={handleClick}>List</button>
-                    <button className={buttonClass1} onClick={handleClick1} >Grid</button>
+                    <Link to='/'><button className={buttonClass} onClick={handleClick}>List</button></Link>
+                    <Link to='/'><button className={buttonClass1} onClick={handleClick1} >Grid</button></Link>
+                    <Link to='../map/'><button className={buttonClass2} onClick={handleClick2}>Map</button></Link>
 
                 </nav>
                 
