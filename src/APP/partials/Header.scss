@@ -26,17 +26,23 @@ header{
 }
 
 @media only screen and (min-width: 600px){
-    nav{
-        display: flex;
-        flex-direction: column;
-        button{
-            width: 100%;
-            font-size: 1.6em;
-            &:first-of-type{
-                margin-bottom: 10px;
+    header{
+        h1{
+            font-size: 3em
+        }
+        nav{
+            display: flex;
+            flex-direction: column;
+            button{
+                width: 100%;
+                font-size: 1.6em;
+                &:first-of-type{
+                    margin-bottom: 10px;
+                }
             }
         }
     }
+   
 }
 
 @media only screen and (min-width: 1200px){

@@ -3,8 +3,9 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 60px;
+    padding: 60px 60px 20px;
     margin: 15px;
+    height: 276px;
     background-color: #fff;
     box-sizing: border-box;
     border-radius: 3px;
@@ -26,18 +27,9 @@
     }
 }
 
-@media only screen and (min-width: 600px){
-    .officeGridItem{
-        margin-bottom: 15px;
-    }
-}
 
-@media only screen and (min-width: 600px){
-    .officeGridItem{
-        flex-wrap: wrap;
-        flex: 1;
-    }
-}
+
+
 
 
 
