@@ -4,11 +4,13 @@ header{
     text-align: center;    
     color: white;
     padding-top: 10px;
+
     h1{
         font-size: 2em;
         margin-bottom: 10px;
         font-weight: 700;
     }
+
     button{
         width: 33%;
         background-color: #00BCD4;
@@ -19,6 +21,7 @@ header{
         border-bottom: 3px solid #00BCD4;
         cursor: pointer;
     }
+
     .selected{
         border-bottom:  solid #FEFF33;
         color: white;
@@ -27,13 +30,17 @@ header{
 }
 
 @media only screen and (min-width: 600px){
+
     header{
+
         h1{
             font-size: 3em
         }
+
         nav{
             display: flex;
             flex-direction: column;
+
             button{
                 width: 100%;
                 font-size: 1.6em;
@@ -45,19 +52,24 @@ header{
 }
 
 @media only screen and (min-width: 1200px){
+
     header{
         display: flex;
         padding-left: 10px;
+
         h1{
             font-size: 2.5em;
         }
+
         nav{
             flex-direction: row;
             margin-left: 24%;
             width: 50%;
+
             a{
                 width: 33%;
             }
+            
             button{
                 &:first-of-type{
                     margin-bottom: 0;

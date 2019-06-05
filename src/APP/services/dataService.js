@@ -11,6 +11,7 @@ class DataService{
                 
                 var offices = response.data;
                 return offices.map( office =>{
+                    
                     return new Office(office.id, office.name, office.description, office.latitude, office.longitude, office.photo);
                     
                 })

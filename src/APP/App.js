@@ -6,11 +6,12 @@ import SingleOfficePage from './office/SingleOfficePage'
 import DataService from './services/dataService';
 import MapPage from './office/MapPage';
 import Animation from '../APP/partials/Animation';
-import { Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 class App extends React.Component{
 
   constructor(props){
+
     super(props);
     this.state = {
 
@@ -22,6 +23,7 @@ class App extends React.Component{
   }
 
   loadOffices(){
+
      DataService.getData().then(data => {
 
        this.setState({
@@ -31,14 +33,16 @@ class App extends React.Component{
 
        })
      });
-    
- }
 
- gridViewHandler = () =>{
-   this.setState({
-     view: 'grid'
-   })
- }
+  }
+
+  gridViewHandler = () =>{
+
+    this.setState({
+      view: 'grid'
+    })
+
+  }
 
  listViewHandler = () =>{
 
@@ -70,6 +74,7 @@ mapViewHandler = () =>{
       <Header view={this.state.view} handleClick={this.listViewHandler} handleClick1={this.gridViewHandler} handleClick2={this.mapViewHandler}/> 
       
       <Switch>
+        
         {(this.state.loading) ? <Animation/> : <Route exact path='/' render={(props) => <OfficesPage {...props} view={this.state.view} officesData={this.state.offices} />}/>}
         <Route  path='/singleOffice/:number' render={(props) => <SingleOfficePage {...props} officeData={this.state.offices} />} />
         <Route  path='/map' component={MapPage} />

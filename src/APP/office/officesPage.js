@@ -17,7 +17,9 @@ const OfficesPage = (props) =>{
                     return  (props.view === 'list') ? 
                         <Link to={`singleOffice/${i}`} key={i} ><OfficeListItem officeData={officeData} key={i}/></Link>
                          : <Link to={`singleOffice/${i}`} key={i} ><OfficeGridItem officeData={officeData} key={i}/></Link>
+
                 })}
+                
             </div>
         )
     
